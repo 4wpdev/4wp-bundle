@@ -3,7 +3,7 @@
  * Plugin Name: 4WP Bundle
  * Description: Core bundle to support and manage 4WP Blocks ecosystem.
  * Tags: core, bundle, 4wp, blocks 
- * Version: 1.0.6
+ * Version: 1.0.1
  * Author: 4wp.dev
  * Author URI: https://4wp.dev
  * Text Domain: 4wp-bundle
