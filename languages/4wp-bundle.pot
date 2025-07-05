@@ -1,0 +1,79 @@
+# Copyright (C) 2025 4wp.dev
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: 4WP Bundle 1.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/4wp-bundle\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-07-04T17:57:07+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: 4wp-bundle\n"
+
+#. Plugin Name of the plugin
+#: 4wp-bundle.php
+#: inc/admin-menu.php:6
+#: inc/admin-menu.php:7
+msgid "4WP Bundle"
+msgstr ""
+
+#. Description of the plugin
+#: 4wp-bundle.php
+msgid "Core bundle to support and manage 4WP Blocks ecosystem."
+msgstr ""
+
+#. Author of the plugin
+#: 4wp-bundle.php
+msgid "4wp.dev"
+msgstr ""
+
+#. Author URI of the plugin
+#: 4wp-bundle.php
+msgid "https://4wp.dev"
+msgstr ""
+
+#: 4wp-bundle.php:48
+msgid "4WP Bundle is installed in a folder with \"-main\" in its name. For best compatibility, please rename the folder to \"4wp-bundle\"."
+msgstr ""
+
+#: inc/admin-menu.php:16
+#: inc/admin-menu.php:23
+#: inc/admin-menu.php:24
+msgid "Documentation"
+msgstr ""
+
+#: inc/admin-menu.php:16
+msgid "Blocks"
+msgstr ""
+
+#: inc/page-help.php:2
+msgid "4WP Bundle Documentation"
+msgstr ""
+
+#: inc/page-help.php:4
+msgid "Welcome to the 4WP Bundle documentation page."
+msgstr ""
+
+#: inc/page-help.php:8
+msgid "Full Documentation"
+msgstr ""
+
+#: inc/page-help.php:12
+msgid "GitHub Repository"
+msgstr ""
+
+#: inc/page-help.php:15
+msgid "Contact Support"
+msgstr ""
+
+#: inc/page-help.php:19
+msgid "For more information, please visit our"
+msgstr ""
+
+#: inc/rest-api.php:33
+msgid "No download URL provided"
+msgstr ""
