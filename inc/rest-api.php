@@ -80,9 +80,25 @@ function get_4wp_blocks_data() {
         }
     }
 
-    $response = wp_remote_get('https://4wp.dev/plugins.json');
-    $available = is_wp_error($response) ? [] : json_decode(wp_remote_retrieve_body($response), true);
-    return ['installed' => $blocks, 'available' => $available ?: []];
+    $available = [];
+    $response = wp_remote_get(
+        'https://4wp.dev/plugins.json',
+        [
+            'timeout' => 10,
+        ]
+    );
+
+    if ( ! is_wp_error( $response ) ) {
+        $status = wp_remote_retrieve_response_code( $response );
+        if ( $status >= 200 && $status < 300 ) {
+            $decoded = json_decode( wp_remote_retrieve_body( $response ), true );
+            if ( is_array( $decoded ) ) {
+                $available = $decoded;
+            }
+        }
+    }
+
+    return rest_ensure_response( [ 'installed' => $blocks, 'available' => $available ] );
 }
 
 function toggle_4wp_block($request) {
