@@ -200,6 +200,11 @@ function get_4wp_blocks_data() {
                         // e.g., https://github.com/4wpdev/4wp-icons -> https://github.com/4wpdev/4wp-icons#readme
                         $plugin['readme_url'] = rtrim( $plugin['repository'], '/' ) . '#readme';
                     }
+                    // Generate documentation URL if not explicitly provided
+                    if ( ! isset( $plugin['documentation_url'] ) && isset( $plugin['slug'] ) ) {
+                        // Generate documentation URL: https://4wp.dev/plugin/{slug}/
+                        $plugin['documentation_url'] = 'https://4wp.dev/plugin/' . $plugin['slug'] . '/';
+                    }
                     // Map name to title if title doesn't exist (for frontend compatibility)
                     if ( isset( $plugin['name'] ) && ! isset( $plugin['title'] ) ) {
                         $plugin['title'] = $plugin['name'];
