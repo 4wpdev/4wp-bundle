@@ -1,6 +1,6 @@
 {
   "name": "forwp-bundle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "4WP Bundle plugin build setup",
   "scripts": {
     "build": "wp-scripts build",

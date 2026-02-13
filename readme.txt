@@ -4,7 +4,7 @@ Tags: blocks, bundle, management, plugins
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.6
+Stable tag: 1.0.2
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,5 +20,13 @@ Core bundle to support and manage the 4WP Blocks ecosystem. Install, activate, a
 
 == Changelog ==
 
-= 1.0.6 =
-* Initial release.
+= 1.0.2 =
+* Added plugin update functionality with version comparison
+* Added support for GitHub Releases download URLs
+* Added README links for each plugin
+* Added downgrade detection when local version is newer than repository
+* Improved UI with horizontal button layout
+* Updated to use GitHub repository for plugins.json mapping
+
+= 1.0.1 =
+* Initial release with plugin management features
