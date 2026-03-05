@@ -1,0 +1,14 @@
+/* 4WP Show More - editor styles */
+.forwp-show-more__content--preview {
+	max-height: var( --forwp-collapsed-height, 4.5em ) !important;
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient( to bottom, black 0, black calc( 100% - 2em ), transparent 100% );
+	mask-image: linear-gradient( to bottom, black 0, black calc( 100% - 2em ), transparent 100% );
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}
+
+.forwp-show-more__toggle[disabled] {
+	opacity: 0.7;
+	cursor: default;
+}

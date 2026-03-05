@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "4WP Bundle plugin build setup",
   "scripts": {
-    "build": "wp-scripts build",
+    "build": "wp-scripts build && mkdir -p build/addons/show-more && cp addons/show-more/block.json build/addons/show-more/block.json",
     "start": "wp-scripts start"
   },
   "devDependencies": {

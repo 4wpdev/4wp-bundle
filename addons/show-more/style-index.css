@@ -1,0 +1,46 @@
+/* 4WP Show More - frontend styles */
+.forwp-show-more__content {
+	overflow: hidden;
+	max-height: var( --forwp-collapsed-height, 4.5em );
+	transition: max-height 0.45s cubic-bezier( 0.4, 0, 0.2, 1 );
+	/* Smooth fade at bottom when collapsed - text fades instead of hard cut */
+	-webkit-mask-image: linear-gradient( to bottom, black 0, black calc( 100% - 2em ), transparent 100% );
+	mask-image: linear-gradient( to bottom, black 0, black calc( 100% - 2em ), transparent 100% );
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}
+
+.forwp-show-more.is-expanded .forwp-show-more__content {
+	max-height: 2000px;
+	-webkit-mask-image: none;
+	mask-image: none;
+}
+
+.forwp-show-more__button-wrapper {
+	margin-top: 0.75em;
+}
+
+.forwp-show-more__toggle {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+
+.forwp-show-more__toggle:hover {
+	opacity: 0.9;
+}
+
+.forwp-show-more__toggle:focus {
+	outline-offset: 2px;
+}
+
+/* Outline style - fallback when theme doesn't provide */
+.forwp-show-more__button-wrapper.is-style-outline .forwp-show-more__toggle {
+	background: transparent !important;
+	border: 2px solid currentColor;
+}
+
+.forwp-show-more__button-wrapper.is-style-outline .forwp-show-more__toggle:hover {
+	background: color-mix( in srgb, currentColor 8%, transparent ) !important;
+}

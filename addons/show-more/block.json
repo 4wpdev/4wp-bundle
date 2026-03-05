@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "forwp/show-more",
+	"version": "0.1.0",
+	"title": "4WP Show More",
+	"category": "design",
+	"icon": "visibility",
+	"description": "Collapsible content with Show more / Show less toggle. Add groups, paragraphs, or any blocks inside.",
+	"supports": {
+		"html": false,
+		"className": true,
+		"align": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"collapsedHeight": {
+			"type": "string",
+			"default": "4.5em"
+		},
+		"showMoreLabel": {
+			"type": "string",
+			"default": "Show more"
+		},
+		"showLessLabel": {
+			"type": "string",
+			"default": "Show less"
+		},
+		"buttonStyle": {
+			"type": "string",
+			"default": "fill"
+		},
+		"buttonSize": {
+			"type": "string",
+			"default": "medium"
+		},
+		"buttonBackgroundColor": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonTextColor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "4wp-bundle",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./index.css",
+	"viewScript": "file:./view.js"
+}

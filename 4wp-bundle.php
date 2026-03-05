@@ -37,6 +37,7 @@ add_action('plugins_loaded', function() {
 
 require_once plugin_dir_path(__FILE__) . 'inc/admin-menu.php';
 require_once plugin_dir_path(__FILE__) . 'inc/rest-api.php';
+require_once plugin_dir_path(__FILE__) . 'inc/addons.php';
 
 add_action('admin_notices', function() {
     // Check if plugin is in a folder with -main in its name
