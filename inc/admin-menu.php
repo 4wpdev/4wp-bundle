@@ -12,8 +12,10 @@ add_action('admin_menu', function () {
         30
     );
 
-    // Blocks submenu - always first
+    // Blocks submenu - first
     add_submenu_page('4wp-bundle', __('Documentation', '4wp-bundle'), __('Blocks', '4wp-bundle'), 'manage_options', '4wp-bundle', 'render_4wp_bundle_blocks');
+    // Addons submenu - built-in block addons
+    add_submenu_page('4wp-bundle', __('Addons', '4wp-bundle'), __('Addons', '4wp-bundle'), 'manage_options', '4wp-bundle-addons', 'render_4wp_bundle_addons_page');
 }, 10);
 
 // Documentation submenu - always last
