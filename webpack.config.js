@@ -8,6 +8,8 @@ module.exports = {
     'addons/show-more/view': './addons/show-more/view.js',
     'addons/swipe-carousel/index': './addons/swipe-carousel/index.js',
     'addons/swipe-carousel/view': './addons/swipe-carousel/view.js',
+    'addons/video-lightbox/index': './addons/video-lightbox/index.js',
+    'addons/video-lightbox/view': './addons/video-lightbox/view.js',
   },
   output: {
     filename: '[name].js',

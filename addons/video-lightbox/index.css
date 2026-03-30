@@ -1,0 +1,12 @@
+/* 4WP Video Lightbox - editor */
+.forwp-video-lightbox-trigger--editor {
+	cursor: pointer;
+}
+
+.forwp-video-lightbox-trigger__label {
+	font-size: 12px;
+	color: #757575;
+	margin-bottom: 8px;
+	padding: 4px 0;
+	border-bottom: 1px dashed #ddd;
+}

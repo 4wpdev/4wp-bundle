@@ -1,9 +1,9 @@
 {
   "name": "forwp-bundle",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "4WP Bundle plugin build setup",
   "scripts": {
-    "build": "wp-scripts build && mkdir -p build/addons/show-more build/addons/swipe-carousel && cp addons/show-more/block.json build/addons/show-more/block.json && cp addons/swipe-carousel/block.json build/addons/swipe-carousel/block.json && cp addons/swipe-carousel/render.php build/addons/swipe-carousel/render.php",
+    "build": "wp-scripts build && mkdir -p build/addons/show-more build/addons/swipe-carousel build/addons/video-lightbox && cp addons/show-more/block.json build/addons/show-more/block.json && cp addons/swipe-carousel/block.json build/addons/swipe-carousel/block.json && cp addons/swipe-carousel/render.php build/addons/swipe-carousel/render.php && cp addons/video-lightbox/block.json build/addons/video-lightbox/block.json",
     "start": "wp-scripts start"
   },
   "devDependencies": {

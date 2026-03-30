@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "forwp/video-lightbox",
+	"version": "0.1.0",
+	"title": "4WP Video Lightbox",
+	"category": "media",
+	"icon": "video-alt3",
+	"description": "Wrap content as a trigger; clicking opens a lightbox with a video. Add a Cover, Group, or any blocks inside.",
+	"supports": {
+		"html": false,
+		"className": true,
+		"align": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"videoUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"posterUrl": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "4wp-bundle",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./index.css",
+	"viewScript": "file:./view.js"
+}

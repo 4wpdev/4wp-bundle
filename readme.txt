@@ -4,7 +4,7 @@ Tags: blocks, bundle, management, plugins
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,7 @@ Built-in block addons (enable or disable under **4WP Bundle → Addons**):
 
 == Changelog ==
 
-= 1.0.4 =
+= 1.0.5 =
 * Added built-in addon: **4WP Swipe Carousel** (`forwp/swipe-carousel`) — InnerBlocks wrapper with Swiper, breakpoint toggles, pagination/navigation.
 * Webpack entry and build script updated for the new addon; Swiper bundled in `view.js`.
 
