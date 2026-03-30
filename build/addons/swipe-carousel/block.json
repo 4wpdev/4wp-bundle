@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "forwp/swipe-carousel",
+	"version": "0.1.0",
+	"title": "4WP Swipe Carousel",
+	"category": "design",
+	"icon": "slides",
+	"description": "Wrap blocks (e.g. Groups or Columns) and show them as a swipe carousel on mobile, tablet, and/or desktop. Each top-level inner block is one slide.",
+	"supports": {
+		"html": false,
+		"className": true,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"carouselMobile": {
+			"type": "boolean",
+			"default": true
+		},
+		"carouselTablet": {
+			"type": "boolean",
+			"default": true
+		},
+		"carouselDesktop": {
+			"type": "boolean",
+			"default": false
+		},
+		"slidesPerView": {
+			"type": "number",
+			"default": 1
+		},
+		"spaceBetween": {
+			"type": "number",
+			"default": 16
+		},
+		"loop": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoplayDelay": {
+			"type": "number",
+			"default": 5000
+		},
+		"pagination": {
+			"type": "boolean",
+			"default": true
+		},
+		"navigation": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"textdomain": "4wp-bundle",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewStyle": "file:./view.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

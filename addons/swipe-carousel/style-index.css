@@ -1,0 +1,261 @@
+/* Front + editor: base layout when Swiper is disabled or not initialized */
+.forwp-swipe-carousel__static {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.forwp-swipe-carousel__static-item {
+	width: 100%;
+}
+
+/* Inside Columns / flex layouts, carousel must be allowed to shrink (otherwise width → 0 or broken row). */
+.wp-block-column .forwp-swipe-carousel,
+.forwp-swipe-carousel {
+	min-width: 0;
+	max-width: 100%;
+	overflow-x: clip;
+	box-sizing: border-box;
+}
+
+/* Swiper container — кольори з theme.json (--wp--preset--color--primary) */
+.forwp-swipe-carousel__swiper {
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	overflow: hidden !important;
+	touch-action: pan-y;
+	--forwp-carousel-accent: var(--wp--preset--color--primary, var(--wp--preset--color--luminous-vivid-amber, #f5a623));
+	--swiper-theme-color: var(--forwp-carousel-accent);
+	--swiper-navigation-color: var(--forwp-carousel-accent);
+	--swiper-pagination-color: var(--forwp-carousel-accent);
+	--swiper-pagination-bullet-inactive-color: var(--forwp-carousel-accent);
+	--swiper-pagination-bullet-inactive-opacity: 0.35;
+}
+
+/*
+ * Elementor / теми часто задають flex-direction: column або width:100% на .swiper-slide —
+ * через це слайди стають «стовпчиком». Примусово горизонтальний ряд для нашого блоку.
+ */
+.forwp-swipe-carousel .swiper.swiper-initialized .swiper-wrapper {
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	align-items: stretch;
+	box-sizing: border-box;
+	will-change: transform;
+}
+
+.elementor-widget .forwp-swipe-carousel .swiper.swiper-initialized .swiper-wrapper,
+.elementor-element .forwp-swipe-carousel .swiper.swiper-initialized .swiper-wrapper,
+.e-con .forwp-swipe-carousel .swiper.swiper-initialized .swiper-wrapper {
+	display: flex !important;
+	flex-direction: row !important;
+}
+
+/* Until Swiper is initialized, keep content stacked to avoid fake horizontal row. */
+.forwp-swipe-carousel .swiper:not(.swiper-initialized) .swiper-wrapper {
+	display: flex !important;
+	flex-direction: column !important;
+	flex-wrap: wrap !important;
+	transform: none !important;
+}
+
+.forwp-swipe-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-right: 0 !important;
+}
+
+/*
+ * До ініціалізації Swiper не можна тиснути flex-shrink: 0 на слайди: обгортка
+ * роздувається до суми природних ширин (вкладені колонки), clientWidth стає
+ * гігантським → inline width слайдів у мільйони px. Після init Swiper сам задає ширини.
+ */
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide {
+	box-sizing: border-box;
+	min-width: 0;
+}
+
+.forwp-swipe-carousel .swiper.swiper-initialized .swiper-slide.forwp-swipe-carousel__slide {
+	flex-shrink: 0;
+	min-width: unset;
+}
+
+/* Fractional slidesPerView: обрізання контенту слайда, не ширини */
+.forwp-swipe-carousel .swiper-slide {
+	overflow: hidden;
+}
+
+.forwp-swipe-carousel__slide {
+	height: auto;
+	box-sizing: border-box;
+}
+
+/*
+ * Some Gutenberg inner blocks (Group/Columns/Column) may compute absurd intrinsic widths
+ * inside transformed/flex Swiper slides after re-save. Clamp them to slide width.
+ */
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide > * {
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 0 !important;
+	box-sizing: border-box;
+}
+
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-group,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-columns,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-column {
+	max-width: 100% !important;
+	min-width: 0 !important;
+	box-sizing: border-box;
+}
+
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-columns {
+	width: 100% !important;
+}
+
+/* Kill wide/full alignment overflow inside slides (root cause of 10M+ px widths). */
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .alignwide,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .alignfull,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-group.alignwide,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-columns.alignwide,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-column.alignwide {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+/*
+ * Gutenberg Cover: на мобайлі фон (wp-block-cover__background) може отримати
+ * абсурдно велику ширину, через що Swiper "плющить" DOM.
+ * Clamp саме Cover, щоб фон прив'язувався до ширини слайда.
+ */
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-cover,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-cover__background,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-cover__image-background,
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-cover__inner-container {
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 0 !important;
+	box-sizing: border-box;
+}
+
+.forwp-swipe-carousel .swiper-slide.forwp-swipe-carousel__slide .wp-block-cover {
+	overflow: hidden;
+}
+
+/* Disabled by breakpoint/setting: do not look like horizontal plain list. */
+.forwp-swipe-carousel .swiper.swiper-disabled .swiper-wrapper {
+	flex-direction: column !important;
+	flex-wrap: wrap !important;
+	transform: none !important;
+}
+
+.forwp-swipe-carousel .swiper.swiper-disabled .swiper-slide {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-right: 0 !important;
+}
+
+/* Runtime fallback when Swiper is disabled by breakpoint but no .swiper-disabled class is present. */
+.forwp-swipe-carousel--runtime-disabled .swiper-wrapper {
+	flex-direction: column !important;
+	flex-wrap: wrap !important;
+	transform: none !important;
+}
+
+.forwp-swipe-carousel--runtime-disabled .swiper-slide {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-right: 0 !important;
+}
+
+/*
+ * Панель знизу: [prev] [крапки] [next] в один ряд по центру.
+ * Swiper за замовчуванням position:absolute — скидаємо всередині .forwp-swipe-carousel__controls.
+ */
+.forwp-swipe-carousel__controls {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	margin-top: 12px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* When carousel is disabled by breakpoint/settings (stack mode),
+ * navigation controls (arrows/pagination) must not be visible. */
+.forwp-swipe-carousel--runtime-disabled .forwp-swipe-carousel__controls,
+.forwp-swipe-carousel--stacked .forwp-swipe-carousel__controls,
+.forwp-swipe-carousel--init-failed .forwp-swipe-carousel__controls {
+	display: none !important;
+}
+
+.forwp-swipe-carousel__controls .swiper-pagination {
+	position: static !important;
+	inset: auto !important;
+	width: auto !important;
+	max-width: min(100%, 70%);
+	margin: 0 !important;
+	padding: 0;
+	transform: none !important;
+	text-align: center;
+	flex: 0 1 auto;
+}
+
+.forwp-swipe-carousel__controls .swiper-button-prev,
+.forwp-swipe-carousel__controls .swiper-button-next {
+	position: static !important;
+	inset: auto !important;
+	top: auto !important;
+	left: auto !important;
+	right: auto !important;
+	bottom: auto !important;
+	margin: 0 !important;
+	margin-top: 0 !important;
+	width: 2.25rem;
+	height: 2.25rem;
+	min-width: 2.25rem;
+	flex-shrink: 0;
+	color: var(--forwp-carousel-accent, var(--wp--preset--color--primary, var(--wp--preset--color--luminous-vivid-amber, #f5a623)));
+}
+
+.forwp-swipe-carousel__controls .swiper-button-prev::after,
+.forwp-swipe-carousel__controls .swiper-button-next::after {
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+
+/*
+ * If Swiper fails to init, show slides stacked so content is not clipped (e.g. conflicting theme CSS).
+ */
+.forwp-swipe-carousel--init-failed .forwp-swipe-carousel__swiper {
+	overflow: visible;
+}
+
+.forwp-swipe-carousel--init-failed .swiper-wrapper {
+	flex-direction: column !important;
+	flex-wrap: wrap !important;
+	transform: none !important;
+}
+
+.forwp-swipe-carousel--init-failed .swiper-slide {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-right: 0 !important;
+	transform: none !important;
+}
+
+/*
+ * Narrow viewports: when Columns use «не складати на мобільному», колонка з каруселлю не повинна витісняти сусідів.
+ */
+@media (max-width: 781px) {
+	.wp-block-columns.is-not-stacked-on-mobile > .wp-block-column .forwp-swipe-carousel__swiper {
+		min-width: 0;
+	}
+}

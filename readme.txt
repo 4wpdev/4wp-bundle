@@ -4,13 +4,18 @@ Tags: blocks, bundle, management, plugins
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 Core bundle to support and manage the 4WP Blocks ecosystem. Install, activate, and deactivate supported plugins from a single dashboard.
+
+Built-in block addons (enable or disable under **4WP Bundle → Addons**):
+
+* **4WP Show More** — collapsible content with a toggle.
+* **4WP Swipe Carousel** — wrap inner blocks as slides; swipe carousel on mobile/tablet/desktop (per settings). Requires `npm run build` in the plugin folder after install from source.
 
 == Installation ==
 
@@ -19,6 +24,10 @@ Core bundle to support and manage the 4WP Blocks ecosystem. Install, activate, a
 3. Use the "4WP Bundle" menu in your admin dashboard.
 
 == Changelog ==
+
+= 1.0.4 =
+* Added built-in addon: **4WP Swipe Carousel** (`forwp/swipe-carousel`) — InnerBlocks wrapper with Swiper, breakpoint toggles, pagination/navigation.
+* Webpack entry and build script updated for the new addon; Swiper bundled in `view.js`.
 
 = 1.0.2 =
 * Added plugin update functionality with version comparison
