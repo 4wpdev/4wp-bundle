@@ -1,0 +1,10 @@
+{
+  "name": "4wpdev/4wp-bundle",
+  "description": "Core bundle to support and manage 4WP Blocks ecosystem.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=7.4",
+    "composer/installers": "^2.0"
+  }
+}
