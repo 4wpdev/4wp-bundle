@@ -4,7 +4,7 @@ Tags: blocks, bundle, management, plugins
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,7 @@ Built-in block addons (enable or disable under **4WP Bundle → Addons**):
 
 * **4WP Show More** — collapsible content with a toggle.
 * **4WP Swipe Carousel** — wrap inner blocks as slides; swipe carousel on mobile/tablet/desktop (per settings). Requires `npm run build` in the plugin folder after install from source.
+* **4WP Error Scenario** — terminal-style error page scenario (404): RAG best guesses, graceful degradation note, error budget, "Play again" with a usage limit and countdown, progress bar.
 
 == Installation ==
 
@@ -24,6 +25,12 @@ Built-in block addons (enable or disable under **4WP Bundle → Addons**):
 3. Use the "4WP Bundle" menu in your admin dashboard.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added built-in addon: **4WP Error Scenario** (`forwp/error-scenario`) — dynamic block for the 404 page based on SRE "errors will happen, design for them": RAG result teasers, graceful degradation card, error budget, neon "Play again" (one replay, 2.5× faster), usage limit in the terminal and on the page with a countdown, progress bar.
+* Engagement detection uses real pointer movement, so a resting cursor no longer stops the scenario.
+* Webpack entries and build script updated for the new addon.
+* Fixed: empty `addons/swipe-carousel/block.json` in the repository.
 
 = 1.0.5 =
 * Added built-in addon: **4WP Swipe Carousel** (`forwp/swipe-carousel`) — InnerBlocks wrapper with Swiper, breakpoint toggles, pagination/navigation.

@@ -7,7 +7,7 @@ Core bundle to support and manage the 4WP Blocks ecosystem.
 - Manage and install 4WP blocks/plugins from a single dashboard
 - Install, activate, and deactivate supported plugins
 - REST API endpoints for plugin management
-- **Built-in block addons** (see *Addons* in wp-admin): **Show More**, **Swipe Carousel** — each lives under `addons/<slug>/` and is compiled into `build/addons/<slug>/`. From source: run `npm install` and `npm run build` in this plugin directory.
+- **Built-in block addons** (see *Addons* in wp-admin): **Show More**, **Swipe Carousel**, **Error Scenario** (404 page) — each lives under `addons/<slug>/` and is compiled into `build/addons/<slug>/`. From source: run `npm install` and `npm run build` in this plugin directory.
 
 ## Requirements
 

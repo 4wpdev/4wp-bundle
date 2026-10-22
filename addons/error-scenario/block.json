@@ -1,0 +1,182 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "forwp/error-scenario",
+	"version": "0.1.0",
+	"title": "4WP Error Scenario",
+	"category": "design",
+	"icon": "warning",
+	"description": "Full-height error page (404) that plays an editable scenario: a fake AI terminal looks for an answer and offers banners from the Media Library.",
+	"supports": {
+		"html": false,
+		"className": true,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"code": {
+			"type": "string",
+			"default": "404"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Page not found"
+		},
+		"message": {
+			"type": "string",
+			"default": "The page you are looking for does not exist. Our agent is already on it."
+		},
+		"terminalTitle": {
+			"type": "string",
+			"default": "agent@4wp.dev — 404-recovery"
+		},
+		"startDelay": {
+			"type": "number",
+			"default": 1500
+		},
+		"typingSpeed": {
+			"type": "number",
+			"default": 18
+		},
+		"fullHeight": {
+			"type": "boolean",
+			"default": true
+		},
+		"steps": {
+			"type": "array",
+			"default": [
+				{
+					"type": "log",
+					"tone": "muted",
+					"text": "$ agent route --status 404 --path {path}"
+				},
+				{
+					"type": "log",
+					"tone": "info",
+					"text": "→ referrer: {referrer}"
+				},
+				{
+					"type": "log",
+					"tone": "info",
+					"text": "→ intent: \"{query}\""
+				},
+				{
+					"type": "log",
+					"tone": "info",
+					"text": "→ searching RAG index (vector, top_k=5)…"
+				},
+				{
+					"type": "wait",
+					"ms": 900
+				},
+				{
+					"type": "log",
+					"tone": "warn",
+					"text": "✗ best match score 0.12 — below threshold 0.70"
+				},
+				{
+					"type": "log",
+					"tone": "info",
+					"text": "→ fallback: OR-search across products…"
+				},
+				{
+					"type": "wait",
+					"ms": 700
+				},
+				{
+					"type": "log",
+					"tone": "error",
+					"text": "✗ no relevant product for this request"
+				},
+				{
+					"type": "log",
+					"tone": "info",
+					"text": "→ plan B: show something we actually build"
+				},
+				{
+					"type": "banner",
+					"mediaId": 0,
+					"mediaUrl": "",
+					"title": "4WP Weather",
+					"text": "Weather block for WordPress. Not what you searched for, but the forecast is good.",
+					"linkUrl": "",
+					"linkLabel": "Check the weather"
+				},
+				{
+					"type": "log",
+					"tone": "muted",
+					"text": "… waiting for user reaction"
+				},
+				{
+					"type": "idle",
+					"ms": 3000,
+					"text": "→ user engaged ✓ stopping rotation"
+				},
+				{
+					"type": "log",
+					"tone": "warn",
+					"text": "user idle 3000ms → rotating offer"
+				},
+				{
+					"type": "banner",
+					"mediaId": 0,
+					"mediaUrl": "",
+					"title": "4WP FAQ",
+					"text": "FAQ block with schema. It answers questions. Unlike this URL.",
+					"linkUrl": "",
+					"linkLabel": "Open FAQ plugin"
+				},
+				{
+					"type": "idle",
+					"ms": 3000,
+					"text": "→ user engaged ✓ stopping rotation"
+				},
+				{
+					"type": "log",
+					"tone": "warn",
+					"text": "user idle 3000ms → no more offers. plan C: send them home"
+				},
+				{
+					"type": "button",
+					"linkLabel": "Let's start again from Home",
+					"linkUrl": "/"
+				},
+				{
+					"type": "wait",
+					"ms": 600
+				},
+				{
+					"type": "fall",
+					"index": 1
+				},
+				{
+					"type": "log",
+					"tone": "error",
+					"text": "✗ oops — the 0 came loose. even the error page has errors"
+				},
+				{
+					"type": "log",
+					"tone": "ok",
+					"text": "✓ incident logged · 404 counted · error budget 0.1% used"
+				},
+				{
+					"type": "log",
+					"tone": "muted",
+					"text": "$ exit 0  # errors will happen. we design for them."
+				}
+			]
+		}
+	},
+	"textdomain": "4wp-bundle",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./view.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

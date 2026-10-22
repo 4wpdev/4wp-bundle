@@ -10,6 +10,8 @@ module.exports = {
     'addons/swipe-carousel/view': './addons/swipe-carousel/view.js',
     'addons/video-lightbox/index': './addons/video-lightbox/index.js',
     'addons/video-lightbox/view': './addons/video-lightbox/view.js',
+    'addons/error-scenario/index': './addons/error-scenario/index.js',
+    'addons/error-scenario/view': './addons/error-scenario/view.js',
   },
   output: {
     filename: '[name].js',

@@ -1,0 +1,558 @@
+/* Front: error page + fake agent terminal. Colors from theme.json presets. */
+.forwp-error-scenario {
+	--forwp-es-accent: var(--wp--preset--color--primary, #0073aa);
+	--forwp-es-text: var(--wp--preset--color--contrast, #1a1a1a);
+	--forwp-es-muted: var(--wp--preset--color--gray-medium, #666);
+	--forwp-es-term-bg: var(--wp--preset--color--gray-950, #030712);
+	--forwp-es-term-bar: var(--wp--preset--color--gray-900, #111827);
+	--forwp-es-term-text: var(--wp--preset--color--gray-200, #e5e7eb);
+	--forwp-es-ok: var(--wp--preset--color--green-400, #4ade80);
+	--forwp-es-warn: var(--wp--preset--color--amber-500, #f59e0b);
+	--forwp-es-error: var(--wp--preset--color--red-500, #ef4444);
+	--forwp-es-mono: var(--wp--preset--font-family--monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	padding: clamp(2rem, 6vw, 4rem) 1rem;
+	color: var(--forwp-es-text);
+}
+
+.forwp-error-scenario--full {
+	min-height: calc(100vh - var(--forwp-es-offset, 0px));
+	min-height: calc(100svh - var(--forwp-es-offset, 0px));
+}
+
+.forwp-error-scenario__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: clamp(1.5rem, 4vw, 3rem);
+	align-items: center;
+	width: 100%;
+	max-width: var(--wp--style--global--wide-size, 1200px);
+	margin: 0 auto;
+}
+
+@media (min-width: 960px) {
+	.forwp-error-scenario__inner {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+	}
+}
+
+/* Page side */
+.forwp-error-scenario__code {
+	margin: 0;
+	font: 800 clamp(5rem, 16vw, 10rem)/0.9 var(--forwp-es-mono);
+	letter-spacing: -0.04em;
+	color: var(--forwp-es-accent);
+}
+
+.forwp-error-scenario__heading {
+	margin: 0.75rem 0 0.5rem;
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	line-height: 1.15;
+}
+
+.forwp-error-scenario__message {
+	margin: 0;
+	max-width: 34em;
+	color: var(--forwp-es-muted);
+}
+
+.forwp-error-scenario__banner-slot:not(:empty) {
+	margin-top: 1.75rem;
+}
+
+.forwp-error-scenario__banner {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	max-width: 520px;
+	padding: 0.9rem;
+	border: 1px solid var(--wp--preset--color--gray-200, #e5e7eb);
+	border-radius: 2px;
+	background: var(--wp--preset--color--base, #fff);
+	box-shadow: 0 12px 32px rgba(3, 7, 18, 0.12);
+	color: inherit;
+	text-decoration: none;
+	opacity: 0;
+	transform: translateY(12px) scale(0.98);
+	transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.forwp-error-scenario__banner.is-in {
+	opacity: 1;
+	transform: none;
+}
+
+.forwp-error-scenario__banner.is-leaving {
+	opacity: 0;
+	transform: translateY(-8px) scale(0.98);
+}
+
+a.forwp-error-scenario__banner:hover,
+a.forwp-error-scenario__banner:focus-visible {
+	border-color: var(--forwp-es-accent);
+	box-shadow: 0 16px 40px rgba(0, 115, 170, 0.22);
+}
+
+.forwp-error-scenario__banner img {
+	display: block;
+	flex: none;
+	width: 96px;
+	height: 96px;
+	border-radius: 2px;
+	object-fit: cover;
+}
+
+.forwp-error-scenario__banner-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-width: 0;
+}
+
+.forwp-error-scenario__banner-title {
+	font-size: 1.1rem;
+}
+
+.forwp-error-scenario__banner-text {
+	font-size: 0.95rem;
+	color: var(--forwp-es-muted);
+}
+
+.forwp-error-scenario__banner-cta {
+	margin-top: 0.35rem;
+	font-weight: 600;
+	color: var(--forwp-es-accent);
+}
+
+/* Final call to action after the offers are ignored */
+.forwp-error-scenario__home {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.85rem 1.4rem;
+	border-radius: 2px;
+	background: var(--forwp-es-accent);
+	color: #fff;
+	font-weight: 600;
+	text-decoration: none;
+	box-shadow: 0 10px 24px rgba(0, 115, 170, 0.28);
+	transition: background-color 0.2s ease;
+}
+
+.forwp-error-scenario__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	margin-top: 1.75rem;
+}
+
+.forwp-error-scenario__banner-slot:not(:empty) + .forwp-error-scenario__actions {
+	margin-top: 1rem;
+}
+
+/* SRE note: a banner without an image */
+.forwp-error-scenario__banner.is-note {
+	border-left: 3px solid var(--forwp-es-accent);
+}
+
+/* Neon "play again" button next to Home */
+.forwp-error-scenario__replay {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.85rem 1.4rem;
+	border: 1px solid #ff2bd6;
+	border-radius: 2px;
+	background: #050505;
+	color: #ff7ae8;
+	font: 600 1rem/1.2 var(--forwp-es-mono);
+	text-shadow: 0 0 6px rgba(255, 43, 214, 0.9);
+	box-shadow: 0 0 8px rgba(255, 43, 214, 0.6), inset 0 0 8px rgba(255, 43, 214, 0.35);
+	cursor: pointer;
+	opacity: 0;
+	transform: translateY(6px);
+	transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.forwp-error-scenario__replay.is-in {
+	opacity: 1;
+	transform: none;
+	animation: forwp-es-neon 2.4s linear infinite;
+}
+
+.forwp-error-scenario__replay b {
+	padding: 0.1rem 0.4rem;
+	border: 1px solid #39ff88;
+	color: #39ff88;
+	text-shadow: 0 0 6px rgba(57, 255, 136, 0.9);
+}
+
+.forwp-error-scenario__replay:hover,
+.forwp-error-scenario__replay:focus-visible {
+	background: #140010;
+	box-shadow: 0 0 14px rgba(255, 43, 214, 0.9), inset 0 0 10px rgba(255, 43, 214, 0.5);
+}
+
+@keyframes forwp-es-neon {
+	0%, 18%, 22%, 100% { opacity: 1; }
+	20% { opacity: 0.55; }
+}
+
+.forwp-error-scenario__home.is-pulse {
+	animation: forwp-es-pulse 0.9s ease-out 2;
+}
+
+@keyframes forwp-es-pulse {
+	0% { box-shadow: 0 0 0 0 rgba(0, 115, 170, 0.45); }
+	100% { box-shadow: 0 0 0 16px rgba(0, 115, 170, 0); }
+}
+
+.forwp-error-scenario__home::before {
+	content: "←";
+}
+
+.forwp-error-scenario__home:hover,
+.forwp-error-scenario__home:focus-visible {
+	background: var(--wp--preset--color--primary-dark, #005177);
+	color: #fff;
+}
+
+/* "Drop a character": the 0 comes loose and swings on one corner, like a broken sign */
+.forwp-error-scenario__code span {
+	display: inline-block;
+	transform-origin: 12% 12%;
+}
+
+.forwp-error-scenario__code span.is-falling {
+	animation: forwp-es-fall 1.4s cubic-bezier(0.5, 0, 0.75, 0) forwards, forwp-es-wobble 2.4s ease-in-out 1.4s infinite;
+}
+
+@keyframes forwp-es-fall {
+	0% { transform: rotate(0); }
+	12% { transform: rotate(-4deg); }
+	35% { transform: rotate(24deg); }
+	55% { transform: rotate(10deg); }
+	75% { transform: rotate(19deg); }
+	100% { transform: rotate(16deg); }
+}
+
+@keyframes forwp-es-wobble {
+	0%, 100% { transform: rotate(16deg); }
+	50% { transform: rotate(13deg); }
+}
+
+/* Terminal side */
+.forwp-error-scenario__terminal {
+	overflow: hidden;
+	border-radius: 12px;
+	background: var(--forwp-es-term-bg);
+	box-shadow: 0 24px 60px rgba(3, 7, 18, 0.35);
+	color: var(--forwp-es-term-text);
+}
+
+.forwp-error-scenario__terminal.is-closed {
+	display: none;
+}
+
+.forwp-error-scenario__bar {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.6rem 0.9rem;
+	background: var(--forwp-es-term-bar);
+	font: 12px/1.2 var(--forwp-es-mono);
+	color: var(--wp--preset--color--gray-medium, #9ca3af);
+}
+
+.forwp-error-scenario__dots {
+	display: inline-flex;
+	gap: 6px;
+}
+
+.forwp-error-scenario__dots i {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: var(--forwp-es-error);
+}
+
+.forwp-error-scenario__dots i:nth-child(2) { background: var(--forwp-es-warn); }
+.forwp-error-scenario__dots i:nth-child(3) { background: var(--forwp-es-ok); }
+
+.forwp-error-scenario__title {
+	flex: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+.forwp-error-scenario__close {
+	padding: 0 0.25rem;
+	border: 0;
+	background: none;
+	color: inherit;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.forwp-error-scenario__close:hover,
+.forwp-error-scenario__close:focus-visible {
+	color: var(--forwp-es-term-text);
+}
+
+.forwp-error-scenario__screen {
+	position: relative;
+	height: clamp(260px, 42vh, 420px);
+	overflow-y: auto;
+	padding: 1rem 1.1rem 1.25rem;
+	font: 13px/1.65 var(--forwp-es-mono);
+}
+
+/* Boot splash: shown until the scenario starts, then fades out */
+.forwp-error-scenario__splash {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-content: start;
+	gap: 0.5rem 1.25rem;
+	padding: 1rem 1.1rem;
+	background: var(--forwp-es-term-bg);
+	transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.forwp-error-scenario.is-running .forwp-error-scenario__splash {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.forwp-error-scenario__mascot {
+	margin: 0;
+	font: inherit;
+	line-height: 1.2;
+	color: #d97757;
+}
+
+.forwp-error-scenario__splash-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.forwp-error-scenario__splash-text strong {
+	display: inline;
+	color: #fff;
+}
+
+.forwp-error-scenario__splash-text span,
+.forwp-error-scenario__splash-status {
+	color: #9ca3af;
+}
+
+.forwp-error-scenario__splash-status {
+	grid-column: 1 / -1;
+	margin: 0.75rem 0 0;
+}
+
+.forwp-error-scenario__splash-status i {
+	font-style: normal;
+	animation: forwp-es-blink 1.2s steps(1) infinite;
+}
+
+.forwp-error-scenario__splash-status i:nth-child(2) { animation-delay: 0.2s; }
+.forwp-error-scenario__splash-status i:nth-child(3) { animation-delay: 0.4s; }
+
+.forwp-error-scenario__lines {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.forwp-error-scenario__line {
+	margin: 0;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.forwp-error-scenario__line.is-muted { color: #9ca3af; }
+.forwp-error-scenario__line.is-ok { color: var(--forwp-es-ok); }
+.forwp-error-scenario__line.is-warn { color: var(--forwp-es-warn); }
+.forwp-error-scenario__line.is-error { color: var(--forwp-es-error); }
+
+.forwp-error-scenario__cursor {
+	display: inline-block;
+	width: 0.6em;
+	height: 1.1em;
+	vertical-align: text-bottom;
+	background: var(--forwp-es-ok);
+	animation: forwp-es-blink 1s steps(1) infinite;
+}
+
+/* Scenario progress under the terminal */
+.forwp-error-scenario__progress {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.45rem 1rem;
+	border-top: 1px solid #1f2937;
+	font: 0.75rem/1.4 var(--forwp-es-mono);
+	color: #9ca3af;
+}
+
+.forwp-error-scenario__progress-fill {
+	position: absolute;
+	top: -1px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: var(--forwp-es-ok);
+	box-shadow: 0 0 8px var(--forwp-es-ok);
+	transition-property: width;
+	transition-timing-function: linear;
+}
+
+.forwp-error-scenario.is-done .forwp-error-scenario__progress {
+	color: var(--forwp-es-ok);
+}
+
+/* Usage limit: CLI notice in the terminal (agent CLI style) */
+.forwp-error-scenario__limit {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0.75rem;
+	white-space: pre;
+}
+
+.forwp-error-scenario__limit-cmd {
+	color: var(--forwp-es-term-text);
+}
+
+.forwp-error-scenario__limit-out {
+	color: #d97757;
+}
+
+.forwp-error-scenario__limit-hint {
+	color: #6b7280;
+}
+
+.forwp-error-scenario__limit b,
+.forwp-error-scenario__quota b,
+.forwp-error-scenario__replay.is-locked b {
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Usage limit: quota banner on the page (chat app style) */
+.forwp-error-scenario__quota {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	max-width: 520px;
+	padding: 0.75rem 0.9rem;
+	border: 1px solid #e8d5cc;
+	border-radius: 2px;
+	background: #faf6f3;
+	font-size: 0.92rem;
+	opacity: 0;
+	transform: translateY(8px);
+	transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.forwp-error-scenario__quota.is-in {
+	opacity: 1;
+	transform: none;
+}
+
+.forwp-error-scenario__quota-icon {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 1.4rem;
+	height: 1.4rem;
+	border: 1.5px solid #c96442;
+	border-radius: 50%;
+	color: #c96442;
+	font: 700 0.8rem/1 Georgia, serif;
+}
+
+.forwp-error-scenario__quota-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	min-width: 0;
+	color: var(--forwp-es-muted);
+}
+
+.forwp-error-scenario__quota-body strong {
+	color: var(--forwp-es-text);
+}
+
+.forwp-error-scenario__quota-cta {
+	margin-left: auto;
+	padding: 0.4rem 0.8rem;
+	border-radius: 2px;
+	background: #1f1e1d;
+	color: #fff;
+	font-weight: 600;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.forwp-error-scenario__quota-cta:hover,
+.forwp-error-scenario__quota-cta:focus-visible {
+	background: #000;
+	color: #fff;
+}
+
+/* Replay button locked by the limit: neon off, countdown inside */
+.forwp-error-scenario__replay.is-locked {
+	border-color: #3f3f46;
+	color: #71717a;
+	text-shadow: none;
+	box-shadow: none;
+	cursor: not-allowed;
+	animation: none;
+}
+
+.forwp-error-scenario__replay.is-locked b {
+	padding: 0;
+	border: 0;
+	color: #a1a1aa;
+	text-shadow: none;
+}
+
+@keyframes forwp-es-blink {
+	50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.forwp-error-scenario__terminal,
+	.forwp-error-scenario__banner {
+		transition: none;
+	}
+
+	.forwp-error-scenario__cursor {
+		animation: none;
+	}
+
+	.forwp-error-scenario__home,
+	.forwp-error-scenario__splash,
+	.forwp-error-scenario__quota {
+		transition: none;
+	}
+
+	.forwp-error-scenario__home.is-pulse,
+	.forwp-error-scenario__replay.is-in,
+	.forwp-error-scenario__splash-status i {
+		animation: none;
+	}
+
+	.forwp-error-scenario__code span.is-falling {
+		animation: none;
+		transform: rotate(16deg);
+	}
+}
